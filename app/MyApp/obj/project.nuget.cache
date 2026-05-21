@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "NFM2aLRk8W8=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\aamandaop\\Documents\\projetos\\devops-aks-test\\app\\MyApp\\MyApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\aamandaop\\.nuget\\packages\\microsoft.aspnetcore.openapi\\10.0.8\\microsoft.aspnetcore.openapi.10.0.8.nupkg.sha512",
+    "C:\\Users\\aamandaop\\.nuget\\packages\\microsoft.openapi\\2.0.0\\microsoft.openapi.2.0.0.nupkg.sha512"
+  ],
+  "logs": []
+}
