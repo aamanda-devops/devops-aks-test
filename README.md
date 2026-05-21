@@ -36,40 +36,44 @@ A solução foi construída com os seguintes componentes:
 ## Deploy da Infraestrutura
 
 1. Provisionamento via Terraform
-cd infra/envs/dev
-terraform init
-terraform apply -auto-approve
+- cd infra/envs/dev
+- terraform init
+- terraform apply -auto-approve
 
 2. Configuração do acesso ao cluster
-az aks get-credentials -g rg-devops -n aks-devops-test
-kubectl get nodes
-Build e Publicação da Aplicação
+- az aks get-credentials -g rg-devops -n aks-devops-test
+- kubectl get nodes
+
+## Build e Publicação da Aplicação
 Build da imagem Docker
-docker build -t acrdevopsamanda123.azurecr.io/myapp:v1 .
+- docker build -t acrdevopsamanda123.azurecr.io/myapp:v1
+
 Push para o ACR
-docker push acrdevopsamanda123.azurecr.io/myapp:v1
+- docker push acrdevopsamanda123.azurecr.io/myapp:v1
+
 Deploy no Kubernetes
-kubectl apply -f k8s/
+- kubectl apply -f k8s/
+
 Validação
-kubectl get pods
-kubectl get svc
-kubectl get ingress
-Acesso à Aplicação
+- kubectl get pods
+- kubectl get svc
+- kubectl get ingress
 
 ---
 
-## A aplicação é exposta publicamente via Ingress:
+## Acesso à Aplicação
+A aplicação é exposta publicamente via Ingress:
 http://20.12.153.144
 
 ---
 
 ## Decisões Técnicas
-Uso de AKS gerenciado para reduzir complexidade operacional
-Integração com Azure Container Registry para controle de imagens
-Separação entre infraestrutura (Terraform) e runtime (Kubernetes)
-Uso de Ingress Controller para exposição HTTP padronizada
-Aplicação de liveness/readiness probes para confiabilidade
-Definição de requests e limits para controle de recursos
+- Uso de AKS gerenciado para reduzir complexidade operacional
+- Integração com Azure Container Registry para controle de imagens
+- Separação entre infraestrutura (Terraform) e runtime (Kubernetes)
+- Uso de Ingress Controller para exposição HTTP padronizada
+- Aplicação de liveness/readiness probes para confiabilidade
+- Definição de requests e limits para controle de recursos
 
 ---
 
@@ -86,8 +90,8 @@ Solução: ajuste de containerPort e probes para a porta correta
 ## Considerações Finais
 Esta implementação cobre o fluxo completo de uma aplicação cloud-native:
 
-Provisionamento de infraestrutura como código
-Build e publicação de imagem container
-Deploy em cluster Kubernetes gerenciado
-Exposição pública via Ingress
-Resolução de incidentes comuns em ambientes Kubernetes
+- Provisionamento de infraestrutura como código
+- Build e publicação de imagem container
+- Deploy em cluster Kubernetes gerenciado
+- Exposição pública via Ingress
+- Resolução de incidentes comuns em ambientes Kubernetes
