@@ -33,29 +33,6 @@ A solução foi construída com os seguintes componentes:
 
 ---
 
-## Estrutura do Repositório
-
-devops-aks-test/
-├── app/
-│ └── MyApp/ # Aplicação ASP.NET Core
-├── infra/
-│ ├── envs/
-│ │ └── dev/ # Ambiente de desenvolvimento (Terraform root)
-│ ├── modules/
-│ │ ├── aks/
-│ │ ├── acr/
-│ │ ├── network/
-│ │ ├── rg/
-│ │ └── k8s/
-├── k8s/
-│ ├── deployment.yaml # Deployment da aplicação
-│ ├── service.yaml # Service Kubernetes
-│ └── ingress.yaml # Exposição HTTP pública
-└── README.md
-
-
----
-
 ## Deploy da Infraestrutura
 
 1. Provisionamento via Terraform
@@ -79,8 +56,12 @@ kubectl get svc
 kubectl get ingress
 Acesso à Aplicação
 
+---
+
 ## A aplicação é exposta publicamente via Ingress:
 http://20.12.153.144
+
+---
 
 ## Decisões Técnicas
 Uso de AKS gerenciado para reduzir complexidade operacional
@@ -90,6 +71,8 @@ Uso de Ingress Controller para exposição HTTP padronizada
 Aplicação de liveness/readiness probes para confiabilidade
 Definição de requests e limits para controle de recursos
 
+---
+
 ## Problemas Encontrados e Soluções
 1. Falha no pull de imagem (ImagePullBackOff)
 Causa: permissões ausentes no ACR
@@ -97,6 +80,8 @@ Solução: atribuição da role AcrPull ao Managed Identity do AKS
 2. Falha de health check no Kubernetes
 Causa: mismatch entre porta da aplicação e configuração do Kubernetes
 Solução: ajuste de containerPort e probes para a porta correta
+
+---
 
 ## Considerações Finais
 Esta implementação cobre o fluxo completo de uma aplicação cloud-native:
